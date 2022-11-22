@@ -1,0 +1,102 @@
+// Responsive Mixin
+$breakpoints: (
+	"phone-smallest": 340px,
+	"phone-small": 365px,
+	"phone": 400px,
+	"phone-wide": 480px,
+	"phablet": 560px,
+	"tablet-small": 640px,
+	"tablet": 768px,
+	"tablet-8": 870px,
+	"tablet-medium": 992px,
+	"tablet-wide": 1024px,
+	"desktop-small": 1080px,
+	"desktop-little": 1150px,
+	"desktop": 1248px,
+	"desktop-medium": 1360px,
+	"desktop-wide": 1600px,
+);
+
+@mixin respond($width, $type: max) {
+	@if map_has_key($breakpoints, $width) {
+		$width: map_get($breakpoints, $width);
+		@if $type == min {
+			$width: $width + 1px;
+		}
+		@media only screen and (#{$type}-width: $width) {
+			@content;
+		}
+	}
+}
+
+// Size Mixins
+// For equal size dimensions
+@mixin equalSize($size) {
+	width: $size;
+	height: $size;
+}
+
+// Non equal
+@mixin distinctSize($width, $height: auto) {
+	width: $width;
+	height: $height;
+}
+
+// Flexbox Mixin
+@mixin flex-config(
+	$justify-content: false,
+	$align-items: false,
+	$flex-direction: false
+) {
+	display: flex;
+	@if $justify-content {
+		justify-content: $justify-content;
+	}
+	@if $align-items {
+		align-items: $align-items;
+	}
+	@if $flex-direction {
+		flex-direction: $flex-direction;
+	}
+}
+
+// Pseudo Mixins
+@mixin pseudo($display: inline-block, $pos: absolute, $content: "") {
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+// Border Radius
+@mixin radius($radius: 8px) {
+	border-radius: $radius;
+}
+
+// Font Mixins
+@mixin font($size: false, $weight: false, $lh: false, $ls: false) {
+	@if $size {
+		font-size: $size;
+	}
+	@if $weight {
+		font-weight: $weight;
+	}
+	@if $lh {
+		line-height: $lh;
+	}
+	@if $ls {
+		letter-spacing: $ls;
+	}
+}
+
+// Font Weight, Line Height and Letter Spacing Mixins
+@mixin font-weight-leading-tracking($weight: false, $lh: false, $ls: false) {
+	@if $weight {
+		font-weight: $weight;
+	}
+	@if $lh {
+		line-height: $lh;
+	}
+	@if $ls {
+		letter-spacing: $ls;
+	}
+}

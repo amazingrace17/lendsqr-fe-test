@@ -1,0 +1,19 @@
+@use "../abstracts/colors" as c;
+@use "../abstracts/mixins" as m;
+@use "../abstracts/shadows" as s;
+@use "../base/typography" as *;
+
+.dashboard-page {
+	&__headline {
+		@extend .headline-1;
+		font-weight: 700;
+		color: c.color(primary);
+		margin-bottom: 20px;
+	}
+
+	&__text {
+		@extend .text-1;
+		font-weight: 500;
+		color: c.color(primary);
+	}
+}

@@ -1,0 +1,118 @@
+@use "../abstracts/colors" as c;
+@use "../abstracts/mixins" as m;
+@use "../abstracts/shadows" as s;
+@use "../base/typography" as t;
+
+.login {
+	display: grid;
+	height: 100%;
+	grid-template-columns: 1fr 1.0454fr;
+
+	@include m.respond("desktop-medium") {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@include m.respond("tablet") {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&-left {
+		background-color: c.color(white-shade);
+		padding: 20px;
+		height: 100%;
+
+		@include m.respond("tablet") {
+			padding: 0;
+			background-color: white;
+			height: 100px;
+		}
+	}
+
+	&-visual {
+		position: relative;
+		max-width: 600px;
+		@include m.equalSize(100%);
+		margin-left: auto;
+		margin-right: 49px;
+		@include m.flex-config(center, center);
+
+		@include m.respond("desktop-medium") {
+			margin-right: auto;
+		}
+
+		@include m.respond("tablet") {
+			padding: 20px;
+			z-index: 20;
+		}
+
+		&__logo {
+			position: absolute;
+			z-index: 10;
+			top: 86px;
+			left: 30px;
+			@include m.distinctSize(174px, 36px);
+
+			@include m.respond("tablet") {
+				position: static;
+				top: 0;
+				left: 0;
+			}
+		}
+
+		&__img {
+			@include m.respond("tablet") {
+				display: none;
+			}
+		}
+	}
+
+	&-right {
+		background-color: c.color(white);
+		box-shadow: s.$box-shadow-login;
+		padding: 20px;
+		@include m.flex-config(center, center);
+
+		@include m.respond("tablet") {
+			flex: 1;
+		}
+	}
+
+	&-content {
+		margin-left: 80px;
+		margin-right: auto;
+		max-width: 447px;
+		width: 100%;
+		font-family: t.$secondaryFont;
+
+		@include m.respond("desktop-medium") {
+			margin-left: auto;
+		}
+
+		&__headline {
+			@include m.font(2.5rem, 700, 1.375, -0.04em);
+			color: c.color(primary);
+			margin-bottom: 10px;
+		}
+
+		&__text {
+			@include m.font(1.25rem, false, 1.35, false);
+			color: c.color(brand-gray);
+			margin-bottom: 60px;
+		}
+	}
+
+	&-form {
+		@include m.flex-config(false, false, column);
+
+		&__forgot-password {
+			text-align: left;
+			box-shadow: none;
+			outline: none;
+			text-transform: uppercase;
+			color: c.color(accent);
+			@include m.font(0.75rem, 600, 1, 0.1em);
+			margin-bottom: 30px;
+		}
+	}
+}

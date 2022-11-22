@@ -1,0 +1,109 @@
+@use "../abstracts/colors" as c;
+@use "../abstracts/mixins" as m;
+@use "../abstracts/shadows" as s;
+@use "../base/typography" as *;
+
+.pagination {
+	@include m.flex-config(space-between, center);
+
+	@include m.respond("tablet-medium") {
+		flex-direction: column;
+	}
+
+	@include m.respond("tablet") {
+		flex-direction: row;
+	}
+
+	@include m.respond("phablet") {
+		flex-direction: column;
+	}
+
+	&-select {
+		background-color: rgba(c.color(primary), 0.1);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 14 14'%3E%3Cpath fill='%23213F7D' d='M11.057 3.994c.841-.841 2.102.462 1.261 1.26l-4.75 4.752a.842.842 0 0 1-1.261 0L1.64 5.38c-.799-.84.463-2.102 1.303-1.26l3.994 3.993 4.12-4.12Z' opacity='.6'/%3E%3C/svg%3E");
+		@include m.radius(4px);
+		@include m.distinctSize(80px, 30px);
+		padding: 7px 12px;
+		@extend .text-2;
+		color: c.color(primary);
+		font-weight: 500;
+		margin: 0 10px;
+		appearance: none;
+		position: relative;
+		background-repeat: no-repeat;
+		background-position: right 12px center;
+		background-size: 14px auto;
+		border: none;
+		outline: none;
+		transition: all 0.2s ease-in-out;
+
+		&:focus {
+			border: thin solid c.color(primary);
+		}
+
+		&-wrapper {
+			@include m.flex-config(center, center);
+
+			@include m.respond("tablet-medium") {
+				margin: 20px 0;
+			}
+		}
+
+		&-label {
+			@extend .text-2;
+		}
+	}
+
+	&__container {
+		@include m.flex-config(flex-start, center);
+	}
+
+	&__item {
+		@extend .text-1;
+		opacity: 0.6;
+		margin-right: 20px;
+
+		&--active {
+			opacity: 1;
+			font-weight: 500;
+		}
+
+		&-next,
+		&-prev {
+			@include m.equalSize(24px);
+			@include m.radius(4px);
+			background-color: rgba(c.color(primary), 0.1);
+			position: relative;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 14px;
+			&.disabled {
+				opacity: 0.6;
+			}
+
+			&-link {
+				display: inline-block;
+				@include m.equalSize(100%);
+			}
+		}
+
+		&-prev {
+			margin-right: 20px;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 14 14'%3E%3Cpath fill='%23213F7D' d='M10.006 11.057c.841.841-.463 2.102-1.261 1.261l-4.75-4.75a.842.842 0 0 1 0-1.261L8.618 1.64c.84-.799 2.102.463 1.26 1.303L5.887 6.937l4.12 4.12Z'/%3E%3C/svg%3E");
+		}
+
+		&-next {
+			background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.99391 2.94274C3.15281 2.10165 4.45656 0.840502 5.255 1.68165L10.0058 6.43241C10.3842 6.76873 10.3842 7.35718 10.0058 7.6935L5.38142 12.36C4.54033 13.159 3.27918 11.8973 4.12033 11.0568L8.1141 7.063L3.99391 2.94274Z' fill='%23213F7D'/%3E%3C/svg%3E%0A");
+		}
+	}
+
+	&__break {
+		@include m.distinctSize(13px, 19px);
+		position: relative;
+		margin-right: 20px;
+		background-image: url("data:image/svg+xml,%3Csvg width='11' height='3' viewBox='0 0 11 3' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.6' d='M1.128 0.0799999C1.43733 0.0799999 1.688 0.176 1.88 0.368C2.072 0.56 2.168 0.810667 2.168 1.12C2.168 1.42933 2.072 1.68 1.88 1.872C1.688 2.064 1.43733 2.16 1.128 2.16C0.818667 2.16 0.568 2.064 0.376 1.872C0.184 1.68 0.0880001 1.42933 0.0880001 1.12C0.0880001 0.810667 0.184 0.56 0.376 0.368C0.568 0.176 0.818667 0.0799999 1.128 0.0799999ZM5.378 0.0799999C5.68733 0.0799999 5.938 0.176 6.13 0.368C6.322 0.56 6.418 0.810667 6.418 1.12C6.418 1.42933 6.322 1.68 6.13 1.872C5.938 2.064 5.68733 2.16 5.378 2.16C5.06867 2.16 4.818 2.064 4.626 1.872C4.434 1.68 4.338 1.42933 4.338 1.12C4.338 0.810667 4.434 0.56 4.626 0.368C4.818 0.176 5.06867 0.0799999 5.378 0.0799999ZM9.628 0.0799999C9.93733 0.0799999 10.188 0.176 10.38 0.368C10.572 0.56 10.668 0.810667 10.668 1.12C10.668 1.42933 10.572 1.68 10.38 1.872C10.188 2.064 9.93733 2.16 9.628 2.16C9.31867 2.16 9.068 2.064 8.876 1.872C8.684 1.68 8.588 1.42933 8.588 1.12C8.588 0.810667 8.684 0.56 8.876 0.368C9.068 0.176 9.31867 0.0799999 9.628 0.0799999Z' fill='%23545F7D'/%3E%3C/svg%3E%0A");
+		background-repeat: no-repeat;
+		background-position: center 80%;
+		background-size: 14px;
+	}
+}

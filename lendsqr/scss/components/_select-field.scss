@@ -1,0 +1,37 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/colors" as c;
+
+.select {
+	&-wrapper {
+		position: relative;
+		width: 100%;
+	}
+
+	&-field {
+		width: 100%;
+		text-transform: capitalize;
+		@include m.radius;
+		color: rgba(c.color(brand-gray), 0.7);
+		background-color: c.color(white);
+		border: thin solid rgba(c.color(primary), 0.2);
+		@include m.flex-config(flex-start, center);
+		cursor: pointer;
+		margin-bottom: 20px;
+		transition: all 0.2s ease-in-out;
+		padding: 10px 20px;
+		height: 40px;
+		outline: none;
+		appearance: none;
+		background-color: transparent;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 14 14'%3E%3Cpath fill='%23213F7D' d='M11.057 3.994c.841-.841 2.102.462 1.261 1.26l-4.75 4.752a.842.842 0 0 1-1.261 0L1.64 5.38c-.799-.84.463-2.102 1.303-1.26l3.994 3.993 4.12-4.12Z' opacity='.6'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 12px center;
+		background-size: 14px auto;
+
+		&:focus {
+			border: 2px solid c.color(accent);
+			outline: none;
+			box-shadow: none;
+		}
+	}
+}

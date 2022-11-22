@@ -1,0 +1,314 @@
+@use "../abstracts/colors" as c;
+@use "../abstracts/mixins" as m;
+@use "../abstracts/shadows" as s;
+@use "../base/typography" as *;
+
+.user-details {
+	&__back {
+		&-btn {
+			@include m.distinctSize(152px, 30px);
+			@include m.flex-config(space-between, center);
+			margin-bottom: 32px;
+
+			@include m.respond("tablet-8") {
+				margin-bottom: 20px;
+			}
+
+			&-icon {
+				@include m.equalSize(30px);
+			}
+
+			&-label {
+				@extend .text-1;
+			}
+		}
+	}
+
+	&__menu {
+		@include m.flex-config(space-between, center);
+		margin-bottom: 40px;
+
+		@include m.respond("tablet-8") {
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+		}
+	}
+
+	&__heading {
+		@extend .headline-1;
+		font-weight: 500;
+		color: c.color(primary);
+
+		@include m.respond("tablet-8") {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__controls {
+		display: flex;
+		align-items: center;
+
+		@include m.respond("tablet-8") {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 20px;
+			align-items: flex-start;
+		}
+
+		@include m.respond("phone") {
+			width: 100%;
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		&-btn {
+			@include m.distinctSize(170px, 40px);
+			@include m.flex-config(center, center);
+			@include m.radius;
+			@include m.font(0.875rem, 600, 1rem, 0.1em);
+			text-transform: uppercase;
+			padding: 12px;
+			border-style: solid;
+			border-width: 1px;
+			background-color: transparent;
+
+			@include m.respond("tablet-8") {
+				width: unset;
+			}
+
+			&--blacklist {
+				color: c.color(danger);
+				border-color: c.color(danger);
+				margin-right: 20px;
+
+				@include m.respond("tablet-8") {
+					margin-right: 0;
+				}
+			}
+
+			&--activate {
+				color: c.color(accent);
+				border-color: c.color(accent);
+			}
+		}
+	}
+
+	&__header {
+		background-color: c.color(white);
+		box-shadow: s.$box-shadow-card;
+		@include m.radius(4px);
+		padding: 30px 30px 0;
+		margin-bottom: 30px;
+
+		@include m.respond("desktop-little") {
+			padding: 30px 0 0;
+		}
+	}
+
+	&__snap {
+		&-view {
+			display: flex;
+			align-items: center;
+			margin-bottom: 50px;
+			white-space: nowrap;
+
+			@include m.respond("desktop-little") {
+				width: 670px;
+				padding: 0 30px;
+			}
+
+			@include m.respond("tablet") {
+				padding: 0 20px;
+			}
+
+			&-wrapper {
+				@include m.respond("desktop-little") {
+					width: calc(100vw - 363px);
+				}
+
+				@include m.respond("tablet") {
+					width: calc(100vw - 40px);
+				}
+			}
+		}
+	}
+
+	&__avatar {
+		@include m.equalSize(100px);
+		@include m.radius(100%);
+	}
+
+	&__name {
+		@extend .headline-2;
+		font-weight: 500;
+		margin-bottom: 8px;
+		color: c.color(primary);
+
+		&-wrapper {
+			margin: 0 30px 0 20px;
+		}
+	}
+
+	&__acct-no {
+		@extend .text-2;
+	}
+
+	&__tier {
+		&-wrapper {
+			padding: 18px 30px;
+			height: 80px;
+			border-left: thin solid rgba(c.color(brand-gray), 0.2);
+			border-right: thin solid rgba(c.color(brand-gray), 0.2);
+			@include m.flex-config(space-between, center, column);
+		}
+
+		&-title {
+			@extend .text-2;
+			font-weight: 500;
+			color: c.color(brand-blue);
+		}
+
+		&-rating {
+			display: flex;
+			align-items: center;
+
+			&-icon {
+				@include m.equalSize(16px);
+			}
+		}
+	}
+
+	&__account {
+		&-wrapper {
+			padding: 0 30px;
+		}
+
+		&-balance {
+			@extend .headline-2;
+			font-weight: 500;
+			color: c.color(brand-blue);
+			margin-bottom: 9px;
+		}
+
+		&-details {
+			@extend .text-3;
+			color: c.color(primary);
+		}
+	}
+
+	&__nav {
+		display: flex;
+		justify-content: space-between;
+		white-space: nowrap;
+
+		@include m.respond("desktop-little") {
+			width: 670px;
+			padding: 0 30px;
+		}
+
+		@include m.respond("tablet") {
+			padding: 0 20px;
+		}
+
+		&-wrapper {
+			@include m.respond("desktop-little") {
+				width: calc(100vw - 363px);
+			}
+
+			@include m.respond("tablet") {
+				width: calc(100vw - 40px);
+			}
+		}
+
+		&-item {
+			padding: 8px 15px;
+			@extend .text-1;
+			color: rgba(c.color(black), 0.8);
+			margin-right: 20px;
+
+			&--active {
+				color: c.color(accent);
+				border-bottom: 2px solid c.color(accent);
+			}
+		}
+	}
+
+	&__body {
+		background-color: c.color(white);
+		box-shadow: s.$box-shadow-card;
+		@include m.radius(4px);
+		padding: 0 30px 30px;
+
+		@include m.respond("tablet") {
+			padding: 0 20px 30px;
+		}
+	}
+
+	&__group {
+		padding: 30px 0;
+		border-bottom: thin solid rgba(c.color(primary), 0.1);
+
+		&--last {
+			padding-bottom: 0;
+			border-bottom: none;
+		}
+
+		&-title {
+			@extend .text-1;
+			font-weight: 500;
+			color: c.color(primary);
+			margin-bottom: 30px;
+		}
+	}
+
+	&__field {
+		&-row {
+			display: grid;
+			column-gap: 20px;
+			row-gap: 30px;
+
+			&--four {
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				@include m.respond("desktop-little") {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+				}
+
+				@include m.respond("tablet-8") {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+
+				@include m.respond("phone-wide") {
+					grid-template-columns: minmax(0, 1fr);
+				}
+			}
+
+			&--five {
+				grid-template-columns: repeat(5, minmax(0, 1fr));
+				@include m.respond("desktop-little") {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+				}
+
+				@include m.respond("tablet-8") {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+
+				@include m.respond("phone-wide") {
+					grid-template-columns: minmax(0, 1fr);
+				}
+			}
+		}
+
+		&-title {
+			@extend .text-3;
+			text-transform: uppercase;
+			margin-bottom: 8px;
+			word-wrap: break-word;
+		}
+
+		&-value {
+			@extend .text-1;
+			font-weight: 500;
+			word-wrap: break-word;
+		}
+	}
+}

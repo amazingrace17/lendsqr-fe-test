@@ -1,0 +1,138 @@
+@use "../abstracts/colors" as c;
+@use "../abstracts/mixins" as m;
+@use "../abstracts/shadows" as s;
+@use "../abstracts/utils" as u;
+@use "../base/typography" as *;
+
+.table {
+	width: 100%;
+	padding: 0 30px;
+	margin-bottom: 20px;
+	background-color: c.color(white);
+	border: thin solid rgba(c.color(primary), 0.06);
+	box-shadow: s.$box-shadow-card;
+	@include m.radius(4px);
+	text-align: left;
+
+	@include m.respond("desktop-medium") {
+		width: 1200px;
+	}
+
+	&-wrapper {
+		@include m.respond("desktop-medium") {
+			overflow-x: scroll;
+			width: calc(100vw - 363px);
+		}
+
+		@include m.respond("tablet") {
+			width: calc(100vw - 40px);
+		}
+	}
+
+	&-filter {
+		&-btn {
+			background: transparent;
+			border: none;
+			box-shadow: none;
+			outline: none;
+			margin-left: 10px;
+			@include m.equalSize(16px);
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		&-icon {
+			@include m.equalSize(16px);
+		}
+	}
+
+	&__heading {
+		text-transform: uppercase;
+		@extend .text-3;
+		font-weight: 600;
+		padding: 20px 0;
+
+		&-label {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+
+	&__data {
+		padding: 23px 0;
+		border-bottom: thin solid rgba(c.color(brand-gray), 0.1);
+		text-transform: capitalize;
+
+		&--last {
+			display: inline-flex;
+			align-items: center;
+			width: 100%;
+		}
+
+		&-label {
+			display: inline-block;
+			vertical-align: middle;
+
+			@extend .text-2;
+			@include m.radius(100px);
+			@include m.flex-config(center, center);
+
+			&--active {
+				color: c.color(accent);
+				background-color: rgba(c.color(accent), 0.06);
+				padding: 7px 14px;
+			}
+
+			&--inactive {
+				color: c.color(brand-gray);
+				background-color: rgba(c.color(brand-gray), 0.06);
+				padding: 7px 12px;
+			}
+
+			&--pending {
+				color: c.color(warning);
+				background-color: rgba(c.color(warning), 0.1);
+				padding: 7px 18px;
+			}
+
+			&--disabled {
+				color: c.color(danger);
+				background-color: rgba(c.color(danger), 0.1);
+				padding: 7px 13px;
+			}
+		}
+
+		&-options {
+			&-btn {
+				background: transparent;
+				border: none;
+				box-shadow: none;
+				outline: none;
+				margin-left: auto;
+				@include m.equalSize(15px);
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			&-icon {
+				// @include m.distinctSize(15px, 14.44px);
+				width: 15px;
+				fill: c.color(brand-gray);
+			}
+		}
+	}
+
+	&__no-data {
+		text-align: center;
+		padding: 30px 20px;
+		font-weight: 700;
+		@extend .headline-2;
+	}
+
+	&__row {
+		&--body {
+			cursor: pointer;
+			position: relative;
+		}
+	}
+}

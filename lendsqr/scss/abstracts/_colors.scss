@@ -1,0 +1,48 @@
+// Scaripay Colors
+
+$colors: (
+	// Primary
+	primary: #213f7d,
+
+	// Accent
+	accent: #39cdcc,
+
+	// Grey
+	brand-gray: #545f7d,
+
+	// Background
+	white-shade: #fefefe,
+
+	// Dashboard
+	dashboard-bg: #fbfbfb,
+
+	// Purple
+	purple: #df18ff,
+
+	// Blue
+	blue: #5718ff,
+
+	// Orange
+	orange: #f55f44,
+
+	// States
+	warning: #e9b200,
+	success: #39cd62,
+	danger: #e4033b,
+
+	// Red
+	red-100: #ff3366,
+
+	// Neutral
+	black: #000,
+	white: #fff
+);
+
+@function color($key) {
+	@if map-has-key($colors, $key) {
+		@return map-get($colors, $key);
+	}
+
+	@warn "Unknown `#{$key}` in $colors.";
+	@return null;
+}

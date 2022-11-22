@@ -1,0 +1,52 @@
+@use "./colors" as c;
+
+w-full {
+	width: 100%;
+}
+
+h-full {
+	height: 100%;
+}
+
+.scrollable-with-no-scrollbars {
+	overflow-y: scroll;
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollable-with-no-scrollbars-x {
+	overflow-x: scroll;
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollable-with-no-scrollbars::-webkit-scrollbar,
+.scrollable-with-no-scrollbars-x::-webkit-scrollbar {
+	/* WebKit */
+	width: 0;
+	height: 0;
+}
+
+// Custom Scrollbars
+@mixin customScrollbars {
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+
+	&::-webkit-scrollbar {
+		width: 3px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: c.color(dashboard-bg);
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: rgba(c.color(brand-gray), 0.2);
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background: c.color(brand-gray);
+	}
+}

@@ -1,0 +1,31 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/colors" as c;
+
+.loading {
+	@include m.equalSize(100%);
+	@include m.flex-config(center, center);
+
+	&__spinner {
+		flex: none;
+		display: block;
+		@include m.equalSize(100px);
+		border-width: 11px;
+		border-style: solid;
+		border-left-color: transparent;
+		border-right-color: transparent;
+		border-bottom-color: transparent;
+		border-radius: 50%;
+		animation: spinnerAnimation 1s ease infinite;
+		border-top-color: c.color(primary);
+	}
+}
+
+@keyframes spinnerAnimation {
+	from {
+		transform: rotate(0turn);
+	}
+
+	to {
+		transform: rotate(1turn);
+	}
+}

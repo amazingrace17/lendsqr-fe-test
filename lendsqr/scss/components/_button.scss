@@ -1,0 +1,24 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/colors" as c;
+
+.button {
+	@include m.flex-config(center, center);
+	outline: none;
+	box-shadow: none;
+	border: none;
+	width: 100%;
+	background: c.color(accent);
+	padding: 12px 20px;
+	@include m.radius;
+	color: c.color(white);
+	text-transform: uppercase;
+	@include m.font(0.875rem, 600, 1.1875, 0.1em);
+
+	&--small {
+		height: 40px;
+	}
+
+	&--large {
+		height: 48px;
+	}
+}

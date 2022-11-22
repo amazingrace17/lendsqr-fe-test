@@ -1,0 +1,59 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/colors" as c;
+@use "../abstracts/shadows" as s;
+@use "../abstracts/z-stacks" as z;
+@use "../base/typography" as *;
+
+.filter-form {
+	&-wrapper {
+		padding-bottom: 30px;
+		transform-origin: top left;
+		position: absolute;
+		width: 270px;
+		z-index: z.$stack-card;
+		top: 60px;
+		left: 15px;
+	}
+
+	&-main {
+		background-color: c.color(white);
+		@include m.radius(4px);
+		box-shadow: s.$box-shadow-card;
+		border: thin solid rgba(c.color(brand-gray), 0.14);
+		padding: 30px 20px;
+	}
+
+	&__label {
+		display: block;
+		@extend .text-2;
+		font-weight: 500;
+		margin-bottom: 6px;
+	}
+
+	&__footer {
+		margin-top: 28px;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		height: 40px;
+		column-gap: 14px;
+	}
+
+	&__button {
+		outline: none;
+		box-shadow: none;
+		@extend .text-2;
+		font-weight: 600;
+		@include m.radius;
+		@include m.flex-config(center, center);
+
+		&--reset {
+			background-color: transparent;
+			border: thin solid c.color(brand-gray);
+		}
+
+		&--submit {
+			color: white;
+			background-color: c.color(accent);
+		}
+	}
+}

@@ -1,0 +1,45 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/colors" as c;
+@use "../abstracts/shadows" as s;
+@use "../abstracts/z-stacks" as z;
+@use "../base/typography" as *;
+
+.user-options-card {
+	width: 180px;
+	position: absolute;
+	top: 9px;
+	right: -50px;
+	z-index: z.$stack-card;
+	background-color: c.color(white);
+	padding: 20px 0;
+	box-shadow: s.$box-shadow-card;
+	@include m.radius(4px);
+	border: thin solid rgba(c.color(brand-gray), 0.14);
+
+	&__btn {
+		@include m.flex-config(flex-start, center);
+		padding: 0 20px;
+		border: none;
+		outline: none;
+		box-shadow: none;
+		text-decoration: none;
+		background-color: transparent;
+		margin-bottom: 20px;
+
+		&--last {
+			margin-bottom: 0;
+		}
+	}
+
+	&__icon {
+		width: 16px;
+		display: inline-block;
+		flex: none;
+		margin-right: 8px;
+	}
+
+	&__label {
+		@extend .text-2;
+		font-weight: 500;
+	}
+}

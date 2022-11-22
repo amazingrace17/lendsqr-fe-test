@@ -1,0 +1,12 @@
+@forward "../abstracts/fonts";
+@forward "../abstracts/colors";
+@forward "../abstracts/utils";
+@forward "./reset";
+@forward "./reset-local";
+@forward "./typography";
+
+html,
+body,
+#__next {
+	height: 100%;
+}
